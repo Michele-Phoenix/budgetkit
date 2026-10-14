@@ -1,0 +1,43 @@
+{% extends "tracker/base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Add an expense</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add expense</button>
+    </form>
+</div>
+
+<h2>All expenses</h2>
+{% if expenses %}
+<input type="text" id="search" placeholder="Search expenses...">
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th></th>
+    </tr>
+    {% for expense in expenses %}
+    <tr class="expense-row">
+        <td>{{ expense.date }}</td>
+        <td>{{ expense.title }}</td>
+        <td>{{ expense.category }}</td>
+        <td>{{ expense.display_amount }}</td>
+        <td style="white-space: nowrap;">
+            <a href="{% url 'expense_edit' expense.pk %}" class="edit-link">Edit</a>
+            <form method="post" action="{% url 'expense_delete' expense.pk %}" class="delete-form" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No expenses yet. Add your first one above.</p>
+{% endif %}
+{% endblock %}

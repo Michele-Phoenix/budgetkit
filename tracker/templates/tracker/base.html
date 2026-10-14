@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Expense Tracker{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'tracker/css/style.css' %}">
+    <script src="{% static 'tracker/js/app.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Expense Tracker</h1>
+            <nav>
+                <a href="{% url 'expense_list' %}" {% if request.resolver_match.url_name == 'expense_list' %}class="active"{% endif %}>Expenses</a>
+                <a href="{% url 'summary' %}" {% if request.resolver_match.url_name == 'summary' %}class="active"{% endif %}>Summary</a>
+                <a href="/admin/">Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</body>
+</html>

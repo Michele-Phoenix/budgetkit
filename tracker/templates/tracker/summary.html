@@ -1,0 +1,43 @@
+{% extends "tracker/base.html" %}
+
+{% block title %}Summary{% endblock %}
+
+{% block content %}
+<h2>Spending summary</h2>
+
+<div class="card">
+    <p>Number of expenses: <strong>{{ count }}</strong></p>
+    <p>Total spent: <strong>{{ spent }}</strong></p>
+    <p>Average expense: <strong>{{ average }}</strong></p>
+    <p>Largest expense: <strong>{{ highest }}</strong></p>
+</div>
+
+<div class="card">
+    <p>Monthly budget: <strong>{{ budget }}</strong></p>
+    <p>Remaining: <strong>{{ remaining }}</strong></p>
+    <p>
+        Status:
+        {% if status == "Over budget" %}
+            <span class="over">{{ status }}</span>
+        {% else %}
+            <span class="ok">{{ status }}</span>
+        {% endif %}
+    </p>
+</div>
+
+<h3>Spending by category</h3>
+{% if rows %}
+<table>
+    <tr><th>Category</th><th>Total</th><th>Share</th></tr>
+    {% for row in rows %}
+    <tr>
+        <td>{{ row.category }}</td>
+        <td>{{ row.total }}</td>
+        <td>{{ row.percent }}%</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Nothing to show yet. Add some expenses first.</p>
+{% endif %}
+{% endblock %}

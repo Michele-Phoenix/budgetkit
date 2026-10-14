@@ -1,0 +1,15 @@
+{% extends "tracker/base.html" %}
+
+{% block title %}Edit expense{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Edit expense</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save changes</button>
+        <a href="{% url 'expense_list' %}" style="margin-left: 12px; color: #4f46e5;">Cancel</a>
+    </form>
+</div>
+{% endblock %}
