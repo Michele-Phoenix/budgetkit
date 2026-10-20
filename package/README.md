@@ -2,6 +2,8 @@
 
 Small helpers for expense totals, category breakdowns and money formatting.
 
+[GitHub Repository](https://github.com/Michele-Phoenix/budgetkit)
+
 ## Install
 
     pip install budgetkit-michele

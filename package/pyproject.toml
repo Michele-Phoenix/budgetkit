@@ -16,5 +16,9 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[project.urls]
+Homepage = "https://github.com/Michele-Phoenix/budgetkit"
+Repository = "https://github.com/Michele-Phoenix/budgetkit"
+
 [tool.setuptools.packages.find]
 include = ["budgetkit*"]
