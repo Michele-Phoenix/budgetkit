@@ -11,6 +11,9 @@ jobs:
   build-n-publish:
     name: Build and publish to TestPyPI
     runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/budgetkit-michele
     permissions:
       id-token: write  # This is required for Trusted Publishing
 
