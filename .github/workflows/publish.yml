@@ -11,6 +11,8 @@ jobs:
   build-n-publish:
     name: Build and publish to TestPyPI
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # This is required for Trusted Publishing
 
     steps:
     - uses: actions/checkout@v4
@@ -35,4 +37,3 @@ jobs:
       with:
         repository-url: https://test.pypi.org/legacy/
         packages-dir: package/dist/
-        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
